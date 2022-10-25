@@ -1,0 +1,18 @@
+from pydactyl import PterodactylClient
+import os
+from dotenv import load_dotenv
+
+# Loading envirement keys
+load_dotenv()
+
+
+# Get Game_manager env keys
+gamemanager_url = os.getenv("gamemanager_ptero_url")
+gamemanager_client_password = os.getenv("client_api_key")
+
+# Create a client to connect to the panel and authenticate with your API key.
+api = PterodactylClient(gamemanager_url, gamemanager_client_password)
+
+
+my_servers = api.client.servers.list_servers()
+print(my_servers)
